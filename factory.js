@@ -1,7 +1,5 @@
 const { Obj } = require("jstoolbox");
 
-exports.default = Factory;
-
 class Factory
 {
     constructor({name = "factory", schema = {}, after = [], afterBuild = (() => {})})
@@ -62,3 +60,5 @@ class Factory
 
     }
 };
+
+exports.default = Factory;
