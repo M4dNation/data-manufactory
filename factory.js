@@ -35,7 +35,7 @@ class Factory
             for (const [index, value] of Object.entries(this.schema))
             {
                 if (Obj.isFunction(value))
-                    obj[index] = value();
+                    obj[index] = value({index: i});
                 else obj[index] = value;
             }
 
