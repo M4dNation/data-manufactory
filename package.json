@@ -1,0 +1,14 @@
+{
+  "name": "factory",
+  "version": "0.0.1",
+  "description": "Data generation based on a schema",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jstoolbox": "^1.0.2"
+  }
+}
