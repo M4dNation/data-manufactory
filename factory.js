@@ -1,6 +1,8 @@
-import { Obj } from "jstoolbox";
+const { Obj } = require("jstoolbox");
 
-export default Factory
+exports.default = Factory;
+
+class Factory
 {
     constructor({name = "factory", schema = {}, after = [], afterBuild = (() => {})})
     {
