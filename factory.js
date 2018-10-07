@@ -61,4 +61,4 @@ class Factory
     }
 };
 
-exports.default = Factory;
+module.exports = Factory; 
