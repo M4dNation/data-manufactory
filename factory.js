@@ -26,9 +26,6 @@ class Factory
     {
         count = count < 1 ? 1 : count;
 
-        if (!Obj.isPlainObject(options))
-            throw new Error("options must be a plain object");
-
         let result = [];
 
         for (let i = 0; i < count; i++)
