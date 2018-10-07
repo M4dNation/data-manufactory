@@ -2,7 +2,7 @@ const { Obj } = require("jstoolbox");
 
 class Factory
 {
-    constructor({name = "factory", schema = {}, after = [], afterBuild = (() => {})})
+    constructor({name = "factory", schema = {}, after = [], afterBuild = []})
     {
         if (!Obj.isString(name) || Obj.isFalsy(name))
             throw new Error("Factory name must be a nom empty string");
@@ -11,10 +11,10 @@ class Factory
             throw new Error("schema must be a plain object");    
 
         if (!Obj.isArray(after))
-            throw new Error("after must be an array");
+            throw new Error("after must be an array of function");
 
-        if (!Obj.isFunction(afterBuild))
-            throw new Error("afterBuild must be a function")
+        if (!Obj.isArray(afterBuild))
+            throw new Error("afterBuild must be an array of function")
 
         this.name = name;
         this.schema = schema;
@@ -47,14 +47,25 @@ class Factory
             result.push(obj);
         }
 
-        this.afterBuild(result);
+        for (const after of this.afterBuild)
+        {
+            after(result);
+        }
 
         return result;
     }
 
-    extend({name = "extended factory", schema = {}, after = []})
+    extend({name = "extended factory", schema = {}, after = [], afterBuild = []})
     {
-
+        return new Factory({
+            name,
+            schema: {
+                ...this.schema,
+                ...schema
+            },
+            after: this.after.concat(after),
+            afterBuild: this.afterBuild.concat(afterBuild)
+        });
     }
 };
 
