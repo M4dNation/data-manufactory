@@ -2,6 +2,10 @@ const { Obj } = require("jstoolbox");
 
 class Factory
 {
+    /**
+    * Instanciate a factory.
+    * @return   {Factory}   A new factory
+    */
     constructor({name = "factory", schema = {}, after = [], afterBuild = []})
     {
         if (!Obj.isString(name) || Obj.isFalsy(name))
@@ -22,6 +26,11 @@ class Factory
         this.afterBuild = afterBuild;
     }
 
+    /**
+    * Build data based on provided schema.
+    * @param   {Number}     The number of data to build
+    * @return   {Array}     An array with all generated data 
+    */
     build(count = 1)
     {
         count = count < 1 ? 1 : count;
@@ -55,6 +64,11 @@ class Factory
         return result;
     }
 
+    /**
+    * Extend an existing factory and return a new one.
+    * @see constructor
+    * @return   {Factory}   A new extended factory
+    */
     extend({name = "extended factory", schema = {}, after = [], afterBuild = []})
     {
         return new Factory({
