@@ -6,7 +6,7 @@ class Factory
     * Instanciate a factory.
     * @return   {Factory}   A new factory
     */
-    constructor({name = "factory", schema = {}, after = [], afterBuild = []})
+    constructor({name = "factory", schema = {}, after = [], afterBuild = [], enableLogging = false})
     {
         if (!Obj.isString(name) || Obj.isFalsy(name))
             throw new Error("Factory name must be a nom empty string");
@@ -20,10 +20,14 @@ class Factory
         if (!Obj.isArray(afterBuild))
             throw new Error("afterBuild must be an array of function")
 
+        if (!Obj.isBool(enableLogging))
+            throw new Error("enableLogging must be a boolean")
+
         this.name = name;
         this.schema = schema;
         this.after = after;
         this.afterBuild = afterBuild;
+        this.enableLogging = enableLogging;
     }
 
     /**
@@ -41,6 +45,9 @@ class Factory
         {
             let obj = {};
 
+            if (this.enableLogging)
+                console.log(`Starting building item ${i}...`);
+
             for (const [index, value] of Object.entries(this.schema))
             {
                 if (Obj.isFunction(value))
@@ -48,9 +55,18 @@ class Factory
                 else obj[index] = value;
             }
 
+            if (this.enableLogging)
+                console.log(`Item ${i} has been built.`);
+
             for (const after of this.after)
             {
+                if (this.enableLogging)
+                    console.log('Starting after object build hook...');
+                
                 after(obj);
+                
+                if (this.enableLogging)
+                    console.log('After object build hook completed.');
             }
 
             result.push(obj);
@@ -58,7 +74,13 @@ class Factory
 
         for (const after of this.afterBuild)
         {
+            if (this.enableLogging)
+                console.log('Starting after build hook...');
+
             after(result);
+
+            if (this.enableLogging)
+                console.log('After build hook completed.');
         }
 
         return result;
@@ -71,7 +93,10 @@ class Factory
     */
     extend({name = "extended factory", schema = {}, after = [], afterBuild = []})
     {
-        return new Factory({
+        if (this.enableLogging)
+            console.log(`Starting to extend factory ${this.name}...`)
+
+        const extendedFactory = new Factory({
             name,
             schema: {
                 ...this.schema,
@@ -80,6 +105,11 @@ class Factory
             after: this.after.concat(after),
             afterBuild: this.afterBuild.concat(afterBuild)
         });
+
+        if (this.enableLogging)
+            console.log(`Finished to extend factory ${this.name}.\nFactory ${extendedFactory.name} has been built.`)
+
+        return extendedFactory;
     }
 };
 
