@@ -1,7 +1,7 @@
 {
   "name": "data-manufactory",
   "version": "0.0.7",
-  "description": "Data generation based on a schema",
+  "description": "Data generation based on a schema.",
   "main": "factory.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

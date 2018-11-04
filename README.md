@@ -8,6 +8,10 @@ It provides a simple factory class you can instanciate to generate the batches y
 **Note: This package is based on `meteor-factory` written by [versolearning](https://github.com/versolearning). Most of the credits goes to them.  
 If you don't need our trimmed version of the package, please use the original one.**
 
+## Install
+
+`npm install --save data-manufactory`
+
 ## Usage
 
 `data-manufactory` exports a single `Factory` class you can import :
