@@ -1,6 +1,6 @@
 {
   "name": "data-manufactory",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Data generation based on a schema.",
   "main": "factory.js",
   "scripts": {
