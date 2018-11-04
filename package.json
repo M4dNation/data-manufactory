@@ -1,6 +1,7 @@
 {
   "name": "data-manufactory",
   "version": "0.0.9",
+  "keywords": ["factory", "data", "generator", "seeding"],
   "description": "Data generation based on a schema.",
   "main": "factory.js",
   "scripts": {
