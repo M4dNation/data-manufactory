@@ -41,3 +41,5 @@ export const DataFactory = new Factory(
 });
 
 ```
+
+You can read the `README.md` of [versolearning](https://github.com/versolearning/meteor-factory/blob/master/README.md) for more information and documentation.
