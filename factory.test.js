@@ -27,7 +27,8 @@ describe('data-manufactory', () =>
 
     test('Instanciate with params should apply params', () => 
     {
-        let factory = new Factory({
+        let factory = new Factory(
+        {
             name: "my-factory",
             schema: someSchema
         });
@@ -41,7 +42,8 @@ describe('data-manufactory', () =>
         const data = someFactory.build();
 
         expect(data).toHaveLength(1);
-        expect(data[0]).toEqual({
+        expect(data[0]).toEqual(
+        {
             someString: "azerty123",
             someBoolean: false,
             someFunction: "run 0"
@@ -66,7 +68,8 @@ describe('data-manufactory', () =>
 
         expect(data).toHaveLength(10);
         expect(afterFunction).toHaveBeenCalledTimes(10);
-        expect(data[0]).toEqual({
+        expect(data[0]).toEqual(
+        {
             someString: "azerty123",
             someBoolean: false,
             someFunction: "run 0"
@@ -86,7 +89,8 @@ describe('data-manufactory', () =>
 
         expect(data).toHaveLength(10);
         expect(afterFunction).toHaveBeenCalledTimes(1);
-        expect(data[0]).toEqual({
+        expect(data[0]).toEqual(
+        {
             someString: "azerty123",
             someBoolean: false,
             someFunction: "run 0"
@@ -98,10 +102,44 @@ describe('data-manufactory', () =>
         let data = someFactory.build(10);
 
         expect(data).toHaveLength(10);
-        expect(data[0]).toEqual({
+        expect(data[0]).toEqual(
+        {
             someString: "azerty123",
             someBoolean: false,
             someFunction: "run 0"
+        });
+    });
+    
+    test('Extend a factory provide a new factory we can build from', () => 
+    {
+        const someAfterFunction = jest.fn();
+        const someAfterBuildFunction = jest.fn();
+
+        let extendedFactory = someFactory.extend({
+            name: "extended-factory",
+            schema: {
+                ...someSchema,
+                someExtendedValue: "value"
+            },
+            after:[someAfterFunction],
+            afterBuild: [someAfterBuildFunction]
+        });
+
+        expect(extendedFactory.name).toBe("extended-factory");
+        expect(extendedFactory.schema).toMatchObject(
+        {
+            ...someSchema,
+            someExtendedValue: "value"
+        });
+
+        const data = extendedFactory.build(4);
+        expect(data).toHaveLength(4);
+        expect(data[0]).toEqual(
+        {
+            someString: "azerty123",
+            someBoolean: false,
+            someFunction: "run 0",
+            someExtendedValue: "value"
         });
     });
 });
