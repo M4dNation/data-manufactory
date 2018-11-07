@@ -1,7 +1,12 @@
 {
   "name": "data-manufactory",
   "version": "0.0.9",
-  "keywords": ["factory", "data", "generator", "seeding"],
+  "keywords": [
+    "factory",
+    "data",
+    "generator",
+    "seeding"
+  ],
   "description": "Data generation based on a schema.",
   "main": "factory.js",
   "scripts": {
@@ -11,5 +16,8 @@
   "license": "ISC",
   "dependencies": {
     "jstoolbox": "^1.0.2"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
   }
 }
