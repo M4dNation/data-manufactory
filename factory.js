@@ -9,19 +9,19 @@ class Factory
     constructor({name = "factory", schema = {}, after = [], afterBuild = [], enableLogging = false})
     {
         if (!Obj.isString(name) || Obj.isFalsy(name))
-            throw new Error("Factory name must be a nom empty string");
+            throw new TypeError("Factory name must be a nom empty string");
 
         if (!Obj.isPlainObject(schema))
-            throw new Error("schema must be a plain object");    
+            throw new TypeError("schema must be a plain object");    
 
         if (!Obj.isArray(after))
-            throw new Error("after must be an array of function");
+            throw new TypeError("after must be an array of function");
 
         if (!Obj.isArray(afterBuild))
-            throw new Error("afterBuild must be an array of function")
+            throw new TypeError("afterBuild must be an array of function");
 
         if (!Obj.isBool(enableLogging))
-            throw new Error("enableLogging must be a boolean")
+            throw new TypeError("enableLogging must be a boolean");
 
         this.name = name;
         this.schema = schema;
@@ -37,6 +37,9 @@ class Factory
     */
     build(count = 1)
     {
+        if (!Obj.isNumber(count))
+            throw new TypeError("count must be a number");
+
         count = count < 1 ? 1 : count;
 
         let result = [];

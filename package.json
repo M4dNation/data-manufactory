@@ -10,7 +10,7 @@
   "description": "Data generation based on a schema.",
   "main": "factory.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
