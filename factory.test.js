@@ -142,4 +142,25 @@ describe('data-manufactory', () =>
             someExtendedValue: "value"
         });
     });
+
+    test('Building should log information when enableLogging is true', () => 
+    {
+        console.log = jest.fn();
+
+        let logFactory = new Factory({
+            schema: someSchema,
+            enableLogging: true
+        });
+
+        const data = logFactory.build(1);
+
+        expect(data).toHaveLength(1);
+        expect(data[0]).toEqual(
+        {
+            someString: "azerty123",
+            someBoolean: false,
+            someFunction: "run 0",
+        });
+        expect(console.log).toHaveBeenCalledTimes(2);
+    });
 });
