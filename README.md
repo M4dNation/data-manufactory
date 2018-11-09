@@ -43,3 +43,35 @@ export const DataFactory = new Factory(
 ```
 
 You can read the `README.md` of [versolearning](https://github.com/versolearning/meteor-factory/blob/master/README.md) for more information and documentation.
+
+## Authors
+
+`meteor-seeder` is maintained by M4dNation Company.
+First version written by [axelvaindal](https://github.com/axelvaindal).
+
+## Contributors
+
+There is actually no other contributors for this project.
+If you want to contribute, feel free to make any suggestions or to contact us.
+
+### Contributing to the package
+
+We try to keep `data-manufactory` as simple as possible, this is why we decided to clone the package created by [versolearning](https://github.com/versolearning).  
+Before proposing a PR or opening an issue, please keep in mind :
+
+    - This package is meant to be as simple as possible
+    - This package tries to respect the [Single Responsibility Principle](https://en.wikipedia.org/wiki/Single_responsibility_principle)
+    - This package tries to use the minimum of dependencies possible
+
+Taking into account the previous points leads us to **NOT** merge proposed pull-request if those :
+
+    - Integrate changes that are too far from the initial purpose of the package
+    - Integrate changes that are adding additional dependencies
+    - Integrate changes that are not unit tested and motivationated
+
+This being said, we **really** welcome pull-request and bug report, so feel free to start a contribution.
+
+## Licence
+
+`data-manufactory` is available under the terms of the MIT LICENSE.  
+Check the licence file for more information.
