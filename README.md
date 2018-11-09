@@ -46,7 +46,7 @@ You can read the `README.md` of [versolearning](https://github.com/versolearning
 
 ## Authors
 
-`meteor-seeder` is maintained by M4dNation Company.
+`data-manufactory` is maintained by M4dNation Company.
 First version written by [axelvaindal](https://github.com/axelvaindal).
 
 ## Contributors
