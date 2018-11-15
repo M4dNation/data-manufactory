@@ -12,6 +12,7 @@ If you don't need our trimmed version of the package, please use the original on
 ## Install
 
 `npm install --save data-manufactory`
+`yarn add data-manufactory`
 
 ## Usage
 
@@ -70,6 +71,19 @@ Taking into account the previous points leads us to **NOT** merge proposed pull-
     - Integrate changes that are not unit tested and motivationated
 
 This being said, we **really** welcome pull-request and bug report, so feel free to start a contribution.
+
+Moreover, Pull Requests should always come with related unit tests, and won't be considered if tests aren't included.
+
+### Testing
+
+`data-manufactory` uses jest for unit testing.  
+If you don't know about jest yet, you can check out their [documentation](https://jestjs.io/en/).
+
+To run the tests, just run : 
+
+`yarn test`
+
+Note that we are using [codecov](https://codecov.io) to keep track of code coverage related to our tests and you shouldn't affect negatively the current coverage of the code by removing tests or not covering new features with new unit tests.
 
 ## Licence
 
