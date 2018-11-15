@@ -13,6 +13,31 @@ const someFactory = new Factory({
 
 describe('data-manufactory', () => 
 {
+    test('Instanciate without a valid name parameter should throw.', () => 
+    {
+        expect(() => new Factory({name: ''})).toThrow("Factory name must be a nom empty string");
+    });
+
+    test('Instanciate without a valid schema parameter should throw.', () => 
+    {
+        expect(() => new Factory({schema: ''})).toThrow("schema must be a plain object");
+    });
+
+    test('Instanciate without a valid after parameter should throw.', () => 
+    {
+        expect(() => new Factory({after: ''})).toThrow("after must be an array of function");
+    });
+
+    test('Instanciate without a valid afterBuild parameter should throw.', () => 
+    {
+        expect(() => new Factory({afterBuild: ''})).toThrow("afterBuild must be an array of function");
+    });
+
+    test('Instanciate without a valid enableLogging parameter should throw.', () => 
+    {
+        expect(() => new Factory({enableLogging: ''})).toThrow("enableLogging must be a boolean");
+    });
+
     test('Instanciate without params should throw', () => 
     {
         expect(() => new Factory()).toThrow();
@@ -149,10 +174,14 @@ describe('data-manufactory', () =>
 
         let logFactory = new Factory({
             schema: someSchema,
-            enableLogging: true
+            enableLogging: true,
+            after: [() => {}],
+            afterBuild: [() => {}]
         });
 
         const data = logFactory.build(1);
+
+        logFactory.extend({});
 
         expect(data).toHaveLength(1);
         expect(data[0]).toEqual(
@@ -161,6 +190,6 @@ describe('data-manufactory', () =>
             someBoolean: false,
             someFunction: "run 0",
         });
-        expect(console.log).toHaveBeenCalledTimes(2);
+        expect(console.log).toHaveBeenCalledTimes(8);
     });
 });
