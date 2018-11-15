@@ -1,3 +1,4 @@
 .vscode/
 .github/
 .travis.yml
+coverage/
