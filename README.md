@@ -11,7 +11,7 @@ If you don't need our trimmed version of the package, please use the original on
 
 ## Install
 
-`npm install --save data-manufactory`
+`npm install --save data-manufactory`  
 `yarn add data-manufactory`
 
 ## Usage
