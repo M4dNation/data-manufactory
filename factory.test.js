@@ -46,13 +46,13 @@ describe("data-manufactory", () => {
   });
 
   test("Instanciate with empty params should not throw", () => {
-    let factory = new Factory({});
+    const factory = new Factory({});
 
     expect(factory.name).toBe("factory");
   });
 
   test("Instanciate with params should apply params", () => {
-    let factory = new Factory({
+    const factory = new Factory({
       name: "my-factory",
       schema: someSchema,
     });
@@ -79,7 +79,7 @@ describe("data-manufactory", () => {
   test("Build with number param should return number of object in an array", () => {
     const afterFunction = jest.fn();
 
-    let factory = new Factory({
+    const factory = new Factory({
       schema: someSchema,
       after: [afterFunction],
     });
@@ -98,7 +98,7 @@ describe("data-manufactory", () => {
   test("Build with after hook should launch hook each time build is done", () => {
     const afterFunction = jest.fn();
 
-    let factory = new Factory({
+    const factory = new Factory({
       schema: someSchema,
       afterBuild: [afterFunction],
     });
@@ -115,7 +115,7 @@ describe("data-manufactory", () => {
   });
 
   test("Build with afterBuild hook should launch hook once all build are completed", () => {
-    let data = someFactory.build(10);
+    const data = someFactory.build(10);
 
     expect(data).toHaveLength(10);
     expect(data[0]).toEqual({
@@ -129,7 +129,7 @@ describe("data-manufactory", () => {
     const someAfterFunction = jest.fn();
     const someAfterBuildFunction = jest.fn();
 
-    let extendedFactory = someFactory.extend({
+    const extendedFactory = someFactory.extend({
       name: "extended-factory",
       schema: {
         ...someSchema,
@@ -158,7 +158,7 @@ describe("data-manufactory", () => {
   test("Building should log information when enableLogging is true", () => {
     console.log = jest.fn();
 
-    let logFactory = new Factory({
+    const logFactory = new Factory({
       schema: someSchema,
       enableLogging: true,
       after: [() => {}],

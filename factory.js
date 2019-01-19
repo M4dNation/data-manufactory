@@ -3,7 +3,6 @@ const { Obj } = require("jstoolbox");
 class Factory {
   /**
    * Instanciate a factory.
-   * @return   {Factory}   A new factory
    */
   constructor({
     name = "factory",
@@ -41,8 +40,8 @@ class Factory {
 
   /**
    * Build data based on provided schema.
-   * @param   {Number}     The number of data to build
-   * @return   {Array}     An array with all generated data
+   * @param   {Number} count  The number of data to build
+   * @return  {Array}         An array with all generated data
    */
   build(count = 1) {
     if (!Obj.isNumber(count)) {
@@ -51,18 +50,21 @@ class Factory {
 
     count = count < 1 ? 1 : count;
 
-    let result = [];
+    const result = [];
 
     for (let i = 0; i < count; i++) {
-      let obj = {};
+      const obj = {};
 
       if (this.enableLogging) {
         console.log(`Starting building item ${i}...`);
       }
 
       for (const [index, value] of Object.entries(this.schema)) {
-        if (Obj.isFunction(value)) obj[index] = value({ index: i });
-        else obj[index] = value;
+        if (Obj.isFunction(value)) {
+          obj[index] = value({ index: i });
+        } else {
+          obj[index] = value;
+        }
       }
 
       if (this.enableLogging) {
