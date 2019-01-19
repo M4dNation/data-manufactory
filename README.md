@@ -20,27 +20,25 @@ If you don't need our trimmed version of the package, please use the original on
 
 ```javascript
 // ES6
-import Factory from 'data-manufactory';
+import Factory from "data-manufactory";
 
 // ES5
-const Factory = require('data-manufactory');
+const Factory = require("data-manufactory");
 ```
 
 Once imported, you just have to instanciate to have an exportable factory you can use to generate data.
 
 ```javascript
-import Factory from 'data-manufactory';
+import Factory from "data-manufactory";
 
 // In order to differentiate your factories, we advise you to name them as the data being generated
-export const DataFactory = new Factory(
-{
-    name: "factory", // The name of your factory
-    schema: {}, // The schema to apply and generate the data
-    after: [], // An array of function to apply each time an object is generated during build
-    afterBuild: [], // An array of function to apply after the build is completed
-    enableLogging: false // Whether or not the logging should be enabled for this seeder
+export const DataFactory = new Factory({
+  name: "factory", // The name of your factory
+  schema: {}, // The schema to apply and generate the data
+  after: [], // An array of function to apply each time an object is generated during build
+  afterBuild: [], // An array of function to apply after the build is completed
+  enableLogging: false, // Whether or not the logging should be enabled for this seeder
 });
-
 ```
 
 You can read the `README.md` of [versolearning](https://github.com/versolearning/meteor-factory/blob/master/README.md) for more information and documentation.
@@ -79,7 +77,7 @@ Moreover, Pull Requests should always come with related unit tests, and won't be
 `data-manufactory` uses jest for unit testing.  
 If you don't know about jest yet, you can check out their [documentation](https://jestjs.io/en/).
 
-To run the tests, just run : 
+To run the tests, just run :
 
 `yarn test`
 

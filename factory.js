@@ -1,119 +1,139 @@
 const { Obj } = require("jstoolbox");
 
-class Factory
-{
-    /**
-    * Instanciate a factory.
-    * @return   {Factory}   A new factory
-    */
-    constructor({name = "factory", schema = {}, after = [], afterBuild = [], enableLogging = false})
-    {
-        if (!Obj.isString(name) || Obj.isFalsy(name))
-            throw new TypeError("Factory name must be a nom empty string");
-
-        if (!Obj.isPlainObject(schema))
-            throw new TypeError("schema must be a plain object");    
-
-        if (!Obj.isArray(after))
-            throw new TypeError("after must be an array of function");
-
-        if (!Obj.isArray(afterBuild))
-            throw new TypeError("afterBuild must be an array of function");
-
-        if (!Obj.isBool(enableLogging))
-            throw new TypeError("enableLogging must be a boolean");
-
-        this.name = name;
-        this.schema = schema;
-        this.after = after;
-        this.afterBuild = afterBuild;
-        this.enableLogging = enableLogging;
+class Factory {
+  /**
+   * Instanciate a factory.
+   * @return   {Factory}   A new factory
+   */
+  constructor({
+    name = "factory",
+    schema = {},
+    after = [],
+    afterBuild = [],
+    enableLogging = false,
+  }) {
+    if (!Obj.isString(name) || Obj.isFalsy(name)) {
+      throw new TypeError("Factory name must be a nom empty string");
     }
 
-    /**
-    * Build data based on provided schema.
-    * @param   {Number}     The number of data to build
-    * @return   {Array}     An array with all generated data 
-    */
-    build(count = 1)
-    {
-        if (!Obj.isNumber(count))
-            throw new TypeError("count must be a number");
+    if (!Obj.isPlainObject(schema)) {
+      throw new TypeError("schema must be a plain object");
+    }
 
-        count = count < 1 ? 1 : count;
+    if (!Obj.isArray(after)) {
+      throw new TypeError("after must be an array of function");
+    }
 
-        let result = [];
+    if (!Obj.isArray(afterBuild)) {
+      throw new TypeError("afterBuild must be an array of function");
+    }
 
-        for (let i = 0; i < count; i++)
-        {
-            let obj = {};
+    if (!Obj.isBool(enableLogging)) {
+      throw new TypeError("enableLogging must be a boolean");
+    }
 
-            if (this.enableLogging)
-                console.log(`Starting building item ${i}...`);
+    this.name = name;
+    this.schema = schema;
+    this.after = after;
+    this.afterBuild = afterBuild;
+    this.enableLogging = enableLogging;
+  }
 
-            for (const [index, value] of Object.entries(this.schema))
-            {
-                if (Obj.isFunction(value))
-                    obj[index] = value({index: i});
-                else obj[index] = value;
-            }
+  /**
+   * Build data based on provided schema.
+   * @param   {Number}     The number of data to build
+   * @return   {Array}     An array with all generated data
+   */
+  build(count = 1) {
+    if (!Obj.isNumber(count)) {
+      throw new TypeError("count must be a number");
+    }
 
-            if (this.enableLogging)
-                console.log(`Item ${i} has been built.`);
+    count = count < 1 ? 1 : count;
 
-            for (const after of this.after)
-            {
-                if (this.enableLogging)
-                    console.log('Starting after object build hook...');
-                
-                after(obj);
-                
-                if (this.enableLogging)
-                    console.log('After object build hook completed.');
-            }
+    let result = [];
 
-            result.push(obj);
+    for (let i = 0; i < count; i++) {
+      let obj = {};
+
+      if (this.enableLogging) {
+        console.log(`Starting building item ${i}...`);
+      }
+
+      for (const [index, value] of Object.entries(this.schema)) {
+        if (Obj.isFunction(value)) obj[index] = value({ index: i });
+        else obj[index] = value;
+      }
+
+      if (this.enableLogging) {
+        console.log(`Item ${i} has been built.`);
+      }
+
+      for (const after of this.after) {
+        if (this.enableLogging) {
+          console.log("Starting after object build hook...");
         }
 
-        for (const after of this.afterBuild)
-        {
-            if (this.enableLogging)
-                console.log('Starting after build hook...');
+        after(obj);
 
-            after(result);
-
-            if (this.enableLogging)
-                console.log('After build hook completed.');
+        if (this.enableLogging) {
+          console.log("After object build hook completed.");
         }
+      }
 
-        return result;
+      result.push(obj);
     }
 
-    /**
-    * Extend an existing factory and return a new one.
-    * @see constructor
-    * @return   {Factory}   A new extended factory
-    */
-    extend({name = "extended factory", schema = {}, after = [], afterBuild = []})
-    {
-        if (this.enableLogging)
-            console.log(`Starting to extend factory ${this.name}...`)
+    for (const after of this.afterBuild) {
+      if (this.enableLogging) {
+        console.log("Starting after build hook...");
+      }
 
-        const extendedFactory = new Factory({
-            name,
-            schema: {
-                ...this.schema,
-                ...schema
-            },
-            after: this.after.concat(after),
-            afterBuild: this.afterBuild.concat(afterBuild)
-        });
+      after(result);
 
-        if (this.enableLogging)
-            console.log(`Finished to extend factory ${this.name}.\nFactory ${extendedFactory.name} has been built.`)
-
-        return extendedFactory;
+      if (this.enableLogging) {
+        console.log("After build hook completed.");
+      }
     }
-};
 
-module.exports = Factory; 
+    return result;
+  }
+
+  /**
+   * Extend an existing factory and return a new one.
+   * @see constructor
+   * @return   {Factory}   A new extended factory
+   */
+  extend({
+    name = "extended factory",
+    schema = {},
+    after = [],
+    afterBuild = [],
+  }) {
+    if (this.enableLogging) {
+      console.log(`Starting to extend factory ${this.name}...`);
+    }
+
+    const extendedFactory = new Factory({
+      name,
+      schema: {
+        ...this.schema,
+        ...schema,
+      },
+      after: this.after.concat(after),
+      afterBuild: this.afterBuild.concat(afterBuild),
+    });
+
+    if (this.enableLogging) {
+      console.log(
+        `Finished to extend factory ${this.name}.\nFactory ${
+          extendedFactory.name
+        } has been built.`
+      );
+    }
+
+    return extendedFactory;
+  }
+}
+
+module.exports = Factory;

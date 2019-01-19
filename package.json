@@ -1,6 +1,6 @@
 {
   "name": "data-manufactory",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "keywords": [
     "factory",
     "data",
@@ -15,10 +15,25 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "jstoolbox": "^1.0.2"
+    "jstoolbox": "1.0.2"
+  },
+  "prettier": {
+    "tabWidth": 2,
+    "singleQuote": false,
+    "trailingComma": "es5",
+    "bracketSpacing": true,
+    "jsxBracketSameLine": true
+  },
+  "xo": {
+    "space": 2,
+    "prettier": true,
+    "rules": {
+      "promise/prefer-await-to-then": "warn"
+    }
   },
   "devDependencies": {
-    "jest": "^23.6.0"
+    "jest": "23.6.0",
+    "xo": "0.24.0"
   },
   "jest": {
     "coverageDirectory": "./coverage/",
