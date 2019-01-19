@@ -10,7 +10,8 @@
   "description": "Data generation based on a schema.",
   "main": "factory.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "lint": "xo"
   },
   "author": "",
   "license": "ISC",
@@ -29,7 +30,27 @@
     "prettier": true,
     "rules": {
       "promise/prefer-await-to-then": "warn"
-    }
+    },
+    "ignores": [
+      "node_modules"
+    ],
+    "overrides": [
+      {
+        "files": [
+          "factory.test.js"
+        ],
+        "globals": [
+          "describe",
+          "test",
+          "expect",
+          "afterEach",
+          "beforeEach",
+          "beforeAll",
+          "jest",
+          "jasmine"
+        ]
+      }
+    ]
   },
   "devDependencies": {
     "jest": "23.6.0",
