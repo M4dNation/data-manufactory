@@ -2,3 +2,4 @@
 .github/
 .travis.yml
 coverage/
+factory.test.js
