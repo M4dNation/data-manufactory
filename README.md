@@ -1,6 +1,6 @@
 # data-manufactory
 
-[![Build Status](https://travis-ci.org/M4dNation/data-manufactory.png?branch=master)](https://travis-ci.org/M4dNation/data-manufactory) ![](https://david-dm.org/M4dNation/data-manufactory.svg) <a href="https://codecov.io/github/M4dNation/data-manufactory?branch=master"><img src="https://codecov.io/github/M4dNation/data-manufactory/coverage.svg?branch=master" alt="Coverage via Codecov" /></a>
+[![Build Status](https://travis-ci.org/M4dNation/data-manufactory.png?branch=master)](https://travis-ci.org/M4dNation/data-manufactory) ![](https://david-dm.org/M4dNation/data-manufactory.svg) [![codecov](https://codecov.io/gh/M4dNation/data-manufactory/branch/develop/graph/badge.svg)](https://codecov.io/gh/M4dNation/data-manufactory)
 
 ## About
 
