@@ -1,5 +1,6 @@
 # data-manufactory
 
+[![Project Status: Active – The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
 [![Build Status](https://travis-ci.org/M4dNation/data-manufactory.png?branch=master)](https://travis-ci.org/M4dNation/data-manufactory) ![](https://david-dm.org/M4dNation/data-manufactory.svg) [![codecov](https://codecov.io/gh/M4dNation/data-manufactory/branch/develop/graph/badge.svg)](https://codecov.io/gh/M4dNation/data-manufactory)
 
 ## About
