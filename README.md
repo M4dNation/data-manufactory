@@ -1,6 +1,6 @@
 # data-manufactory
 
-[![Build Status](https://travis-ci.org/M4dNation/data-manufactory.png?branch=master)](https://travis-ci.org/M4dNation/data-manufactory)
+[![Build Status](https://travis-ci.org/M4dNation/data-manufactory.png?branch=master)](https://travis-ci.org/M4dNation/data-manufactory) ![](https://david-dm.org/M4dNation/data-manufactory.svg)
 
 ## About
 
