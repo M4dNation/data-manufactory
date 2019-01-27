@@ -1,5 +1,7 @@
 # data-manufactory
 
+[![Build Status](https://travis-ci.org/M4dNation/data-manufactory.png?branch=master)](https://travis-ci.org/M4dNation/data-manufactory)
+
 ## About
 
 `data-manufactory` is a package for creating batch of objects.
