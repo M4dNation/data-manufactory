@@ -30,7 +30,7 @@ import Factory from "data-manufactory";
 const Factory = require("data-manufactory");
 ```
 
-Once imported, you just have to instanciate to have an exportable factory you can use to generate data.
+Once imported, you just have to instanciate it to have an exportable factory you can use to generate data.
 
 ```javascript
 import Factory from "data-manufactory";
