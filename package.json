@@ -1,6 +1,6 @@
 {
   "name": "data-manufactory",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "keywords": [
     "factory",
     "data",
@@ -19,7 +19,7 @@
     "jstoolbox": "1.0.2"
   },
   "devDependencies": {
-    "jest": "24.0.0",
+    "jest": "24.1.0",
     "xo": "0.24.0"
   },
   "prettier": {
