@@ -43,15 +43,9 @@
         "files": [
           "factory.test.js"
         ],
-        "globals": [
-          "describe",
-          "test",
-          "expect",
-          "afterEach",
-          "beforeEach",
-          "beforeAll",
-          "jest",
-          "jasmine"
+        "envs": [
+          "node",
+          "jest"
         ]
       }
     ]
